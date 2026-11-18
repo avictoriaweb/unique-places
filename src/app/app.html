@@ -1,0 +1,127 @@
+<header>
+  <div class="header-container">
+    <div class="logo-container">
+      <div class="logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_194_34)">
+            <path
+              d="M19.5625 15.1875C19.5625 15.9414 19.3592 16.5595 18.9551 17.0439C19.2231 16.8203 19.5323 16.6585 19.8828 16.5586L20.3438 14.5625L26.4375 9.5625L21.9062 16.125L20.4951 16.4502C20.5981 16.4418 20.7039 16.4375 20.8125 16.4375L35.1875 18L20.8125 19.5625C20.7039 19.5625 20.5981 19.5572 20.4951 19.5488L21.9062 19.875L26.4375 26.4375L20.3438 21.4375L19.8828 19.4404C19.5322 19.3405 19.2232 19.1789 18.9551 18.9551C19.3595 19.4396 19.5625 20.0583 19.5625 20.8125L18 35.1875L16.4375 20.8125C16.4375 20.0586 16.6398 19.4395 17.0439 18.9551C16.7758 19.1788 16.467 19.3406 16.1162 19.4404L15.6562 21.4375L9.5625 26.4375L14.0938 19.875L15.5039 19.5488C15.4012 19.5572 15.2958 19.5625 15.1875 19.5625L0.8125 18L15.1875 16.4375C15.2958 16.4375 15.4012 16.4419 15.5039 16.4502L14.0938 16.125L9.5625 9.5625L15.6562 14.5625L16.1162 16.5586C16.4669 16.6584 16.7758 16.8204 17.0439 17.0439C16.6401 16.5596 16.4375 15.9411 16.4375 15.1875L18 0.8125L19.5625 15.1875ZM16.125 18L18 19.875L19.875 18L18 16.125L16.125 18Z"
+              fill="#D79A00" />
+          </g>
+          <defs>
+            <clipPath id="clip0_194_34">
+              <rect width="36" height="36" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+
+      </div>
+      <div class="logo-title">
+        unique.places
+      </div>
+    </div>
+
+  </div>
+</header>
+<main>
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-image">
+        <img src="/images/hero-image.png" alt="">
+      </div>
+      <div class="hero-gradient">
+
+      </div>
+      <div class="hero-info">
+        <h1>Места, которые стоит увидеть хотя бы раз в жизни</h1>
+        <img src="/images/hero-line-star.png" alt="">
+        <p>Необычные рестораны, отели, развлечения и другие уникальные места со всего мира</p>
+        <img src="/images/hero-stamp.png" alt="" class="hero-stamp">
+      </div>
+    </div>
+  </section>
+  <section class="articles-section">
+    <div class="articles-container">
+      <div class="articles-grid">
+        @for (place of places; track place.id) {
+          <article class="article-card" [class.expanded]="place.isExpanded">
+            <div class="article-image">
+              <img [src]="place.imageUrl" alt="{{place.name}}">
+            </div>
+            <div class="article-content"  [class.expanded]="place.isExpanded">
+              <h3 class="object-name">{{ place.name }}</h3>
+              <div class="object-type">{{ place.type }}</div>
+              <div class="object-location">{{ place.city }}, {{ place.country }}</div>
+              <div class="object-rate-container">
+                <div class="object-rating">
+                  <img src="/images/star.png" alt="star">
+                  <div class="rating">{{ place.rating }}</div>
+                </div>
+                @if (place.price) {
+                  <div class="object-price">
+                    {{ place.price }}
+                  </div>
+                }
+              </div>
+              <div class="object-tags">
+                @for (tag of place.tags; track tag) {
+                  <div class="object-tag">
+                    {{ tag }}
+                  </div>
+                }
+
+              </div>
+              @if (place.isExpanded) {
+                <div class="object-info full">{{ place.description }}</div>
+              } @else {
+                <div class="object-info short">{{ place.shortDescription }}</div>
+              }
+
+
+            </div>
+            <div class="article-button"
+                 (click)="toggleDescription(place)">{{ place.isExpanded ? 'Скрыть' : 'Подробнее' }}
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="logo-container">
+        <div class="logo">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_194_34)">
+              <path
+                d="M19.5625 15.1875C19.5625 15.9414 19.3592 16.5595 18.9551 17.0439C19.2231 16.8203 19.5323 16.6585 19.8828 16.5586L20.3438 14.5625L26.4375 9.5625L21.9062 16.125L20.4951 16.4502C20.5981 16.4418 20.7039 16.4375 20.8125 16.4375L35.1875 18L20.8125 19.5625C20.7039 19.5625 20.5981 19.5572 20.4951 19.5488L21.9062 19.875L26.4375 26.4375L20.3438 21.4375L19.8828 19.4404C19.5322 19.3405 19.2232 19.1789 18.9551 18.9551C19.3595 19.4396 19.5625 20.0583 19.5625 20.8125L18 35.1875L16.4375 20.8125C16.4375 20.0586 16.6398 19.4395 17.0439 18.9551C16.7758 19.1788 16.467 19.3406 16.1162 19.4404L15.6562 21.4375L9.5625 26.4375L14.0938 19.875L15.5039 19.5488C15.4012 19.5572 15.2958 19.5625 15.1875 19.5625L0.8125 18L15.1875 16.4375C15.2958 16.4375 15.4012 16.4419 15.5039 16.4502L14.0938 16.125L9.5625 9.5625L15.6562 14.5625L16.1162 16.5586C16.4669 16.6584 16.7758 16.8204 17.0439 17.0439C16.6401 16.5596 16.4375 15.9411 16.4375 15.1875L18 0.8125L19.5625 15.1875ZM16.125 18L18 19.875L19.875 18L18 16.125L16.125 18Z"
+                fill="#D79A00" />
+            </g>
+            <defs>
+              <clipPath id="clip0_194_34">
+                <rect width="36" height="36" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+        </div>
+        <div class="logo-title">
+          unique.places
+        </div>
+      </div>
+      <div class="footer-copyright">
+        © 2026 unique.places
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-link">
+        <a href="">Pinterest</a>
+      </div>
+      <div class="footer-link">
+        <a href="">Telegram</a>
+      </div>
+    </div>
+  </div>
+</footer>
