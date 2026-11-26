@@ -1,0 +1,143 @@
+.article-card {
+  background-color: white;
+  border-radius: 16px;
+  border: solid 1px #E0E0E0;
+  display: flex;
+  flex-direction: column;
+
+  &.expanded {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+
+  }
+
+  .article-image {
+    img {
+      border-radius: 16px 16px 0 0;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .article-content {
+    padding: 24px 16px 0 16px;
+    display: flex;
+    flex-direction: column;
+    height: 248px;
+    -webkit-mask-image: linear-gradient(to bottom, #FFFDFE calc(100% - 20px), rgba(255, 253, 254, 0) 100%);
+    mask-image: linear-gradient(to bottom, #FFFDFE calc(100% - 20px), rgba(255, 253, 254, 0) 100%);
+
+    @media (max-width: 640px) {
+      height: 348px;
+    }
+    &.expanded {
+      height: auto;
+
+      -webkit-mask-image: none;
+      mask-image: none;
+
+    }
+
+    .object-name {
+      font-family: OnestBold, sans-serif;
+      font-size: 18px;
+      color: #404141;
+      margin-bottom: 16px;
+    }
+
+    .object-type {
+      font-family: OnestSemiBold, sans-serif;
+      font-size: 14px;
+      color: #BB863F;
+      margin-bottom: 6px;
+    }
+
+    .object-location {
+      font-family: OnestRegular, sans-serif;
+      font-size: 14px;
+      color: #A6A5A6;
+      margin-bottom: 12px;
+    }
+
+    .object-rate-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .object-rating {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 8px;
+
+        .rating {
+          font-family: OnestRegular, sans-serif;
+          font-size: 14px;
+          color: #222727;
+          line-height: 1;
+        }
+      }
+
+      .object-price {
+        font-family: OnestSemiBold, sans-serif;
+        font-size: 14px;
+        color: #BB863F;
+        line-height: 1;
+      }
+    }
+
+    .object-tags {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 8px;
+      margin-bottom: 12px;
+
+      .object-tag {
+        font-family: OnestRegular, sans-serif;
+        font-size: 14px;
+        color: #404141;
+        padding: 5px 10px;
+
+        background: #F2F2F2;
+        border-radius: 1000px;
+
+
+      }
+    }
+
+    .object-info {
+      font-family: OnestRegular, sans-serif;
+      font-size: 14px;
+      line-height: 120%;
+      color: #222727;
+
+      &.short {
+        overflow: hidden;
+      }
+
+
+    }
+
+
+  }
+
+  .article-button {
+    padding: 16px 16px 24px 16px;
+
+    font-family: OnestBold, sans-serif;
+    font-size: 16px;
+    line-height: 120%;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: #794A0B;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+  }
+}

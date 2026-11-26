@@ -1,0 +1,39 @@
+<article class="article-card" [class.expanded]="place().isExpanded">
+  <div class="article-image">
+    <img [src]="place().imageUrl" alt="{{place().name}}">
+  </div>
+  <div class="article-content"  [class.expanded]="place().isExpanded">
+    <h3 class="object-name">{{ place().name }}</h3>
+    <div class="object-type">{{ place().type }}</div>
+    <div class="object-location">{{ place().city }}, {{ place().country }}</div>
+    <div class="object-rate-container">
+      <div class="object-rating">
+        <img src="/images/star.png" alt="star">
+        <div class="rating">{{ place().rating }}</div>
+      </div>
+      @if (place().price) {
+        <div class="object-price">
+          {{ place().price }}
+        </div>
+      }
+    </div>
+    <div class="object-tags">
+      @for (tag of place().tags; track tag) {
+        <div class="object-tag">
+          {{ tag }}
+        </div>
+      }
+
+    </div>
+    @if (place().isExpanded) {
+      <div class="object-info full">{{ place().description }}</div>
+    } @else {
+      <div class="object-info short">{{ place().shortDescription }}</div>
+    }
+
+
+  </div>
+  <div class="article-button"
+       (click)="toggleDescription(place())">{{ place().isExpanded ? 'Скрыть' : 'Подробнее' }}
+  </div>
+</article>
